@@ -1,0 +1,71 @@
+<div class="container">
+    <form  id="formProducto" #registerProductoForm="ngForm" (ngSubmit)="onSubmit(registerProductoForm)">
+        <h4>Registro de producto</h4>
+       
+        <div class="row">
+
+            <div id="info" class="form-grou col-md-5">
+                <label>Codigo: </label>
+                <input type="number" name="codigo" class="form-control" #codigo="ngModel"
+                    [(ngModel)]="producto.codigo" required pattern="^[1-9]\d*$">
+                <small *ngIf="!codigo.valid && codigo.touched" class="invalid-feedback d-block">
+                    El codigo no es válido
+                </small>
+            </div>
+    
+            <div id="info" class="form-group col-md-5">
+                <label>Tipo: </label>
+                <select name="tipo" #tipo="ngModel" [(ngModel)]="producto.tipo" class="form-control">
+                  <option value="Pan" selected>Panes</option>
+                  <option value="Bebidas">Bebidas</option>
+                  <option value="Abarrotes">Abarrotes</option>
+                </select>
+            </div>
+
+        </div>
+        
+        <div class="row">
+
+          <div id="info" class="form-group col-md-10">
+              <label>Nombre:</label>
+              <input type="text" name="nombre" class="form-control" #nombre="ngModel"
+              [(ngModel)]="producto.nombre" required pattern="^[a-zA-ZñÑ0-9\.\s\W]*$">
+              <small *ngIf="!nombre.valid && nombre.touched" class="invalid-feedback d-block">
+                  El nombre no es válido
+              </small>
+          </div>
+        </div>
+    
+          <div class="row">
+
+            <div id="info" class="form-grou col-md-5">
+                <label>Precio: </label>
+                <input type="number" name="precio" class="form-control" #precio="ngModel"
+                    [(ngModel)]="producto.precio" required pattern="^[1-9]\d*$">
+                <small *ngIf="!precio.valid && precio.touched" class="invalid-feedback d-block">
+                    El precio no es válido
+                </small>
+            </div>
+    
+            <div id="info" class="form-grou col-md-5">
+                <label>Cantidad en inventario: </label>
+                <input type="number" name="cantidad_inv" class="form-control" #cantidad_inv="ngModel"
+                    [(ngModel)]="producto.cantidad_inve" required pattern="^[0-9]\d*$">
+                <small *ngIf="!cantidad_inv.valid && cantidad_inv.touched" class="invalid-feedback d-block">
+                    La cantidad en inventario no es válida
+                </small>
+            </div>
+
+            
+          </div>
+
+          <div class="row">
+            <div  class="form-group col-md-6" id="info" style="margin-top:29px;">
+                <input id="boton" type="submit" value="Agregar" class="btn btn-success" [disabled]="registerProductoForm.invalid">
+              </div>
+          </div>
+          
+          
+    
+    </form>
+</div>

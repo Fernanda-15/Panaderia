@@ -1,0 +1,23 @@
+<div class="container">
+    <h3>Reportes </h3>
+    <div class="table-responsive">
+        <table class="table  table-striped" id="table">
+            <thead>
+                <tr>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">PDF</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let reporte of reportes  ">
+                    <td>{{reporte.fecha}}</td>
+                    <td>
+                        <button class="btn btn-info" [routerLink]="['/pdf',reporte.id]">
+                            <span class="bi bi-file-earmark-text"></span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

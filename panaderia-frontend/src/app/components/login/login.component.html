@@ -1,0 +1,49 @@
+<body>
+    <div class="container">
+        <div class="login-container">
+            <div class="register">
+                <h2>¡Bienvenido!</h2>
+                <div style="margin-left:15px;">
+                    <img src="assets/images/user.png" width="150" height="150" routerLink="/">
+                </div>
+            </div>
+            <div class="login">
+                <div class="login-items">
+    
+                    <form id="formLogin" class="col-md-7 mr-auto ml-auto" #loginForm="ngForm"
+                        (ngSubmit)="onSubmit(loginForm)">
+    
+                        <div class="row">
+                            <div id="info" class="form-group">
+                                <label>Usuario: </label>
+                                <input type="text" name="userName" class="form-control" #userName="ngModel"
+                                    [(ngModel)]="user.nombre" required>
+                                <small *ngIf="!userName.valid && userName.touched" class="invalid-feedback d-block">
+                                    Ingrese el usuario.
+                                </small>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div id="info" class="form-group">
+                                <label>Contraseña: </label>
+                                <input type="password" name="contrasena" class="form-control" #contrasena="ngModel"
+                                    [(ngModel)]="user.contrasena" required>
+                                <small *ngIf="!contrasena.valid && contrasena.touched" class="invalid-feedback d-block">
+                                    Ingrese la contraseña.
+                                </small>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div style="margin-top: 10px; margin-left: 19px;">
+                                <input id="boton" type="submit" value="Iniciar Sesión" class="btn btn-success"
+                                    [disabled]="loginForm.invalid">
+                            </div>
+                        </div>
+    
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>

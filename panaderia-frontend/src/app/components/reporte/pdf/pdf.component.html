@@ -1,0 +1,31 @@
+<div class="container">
+    <div id="htmlData">
+        <h3>Productos vendidos</h3>
+        <h4 id="fe">Fecha: {{hoyEs}}</h4>
+        <div class="table-responsive">
+            <table class="table  table-striped" id="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Producto</th>
+                        <th scope="col">Cantidad Vendida</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let p of productos ">
+                        <td>{{p.nombre}}</td>
+                        <td>{{p.cantidad}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="totales">
+            <h5 id="monto">₡{{pan}}</h5><h5 id="nombre">Pan:</h5> 
+            <h5 id="monto">₡{{bebida}}</h5><h5 id="nombre">Bebidas:</h5> 
+            <h5 id="monto">₡{{abarrotes}}</h5><h5 id="nombre">Abarrotes:</h5> 
+            <h5 id="monto">₡{{totalV}}</h5><h5 id="nombre">Ventas totales:</h5> 
+        </div>
+    </div>
+    <button class="btn btn-info" (click)="downloadPDF()">
+        <span class="bi bi-file-earmark-pdf"></span> Generar PDF
+    </button>
+</div>

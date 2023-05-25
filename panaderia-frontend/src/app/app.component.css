@@ -1,0 +1,36 @@
+#navbarNavDropdown {
+    margin-left: 340px;
+}
+
+#opc {
+    margin-left: 50px;
+}
+
+#menu a {
+    color: white;
+}
+
+#submenu a {
+    color: black;
+}
+
+footer {
+    border-top: 200px;
+    background: #343a40;
+    font-size: 14px;
+    bottom: 0;
+    position: fixed;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 999;
+}
+
+footer p {
+    margin: 15px 0;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}

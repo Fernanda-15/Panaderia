@@ -1,0 +1,147 @@
+<body>
+    <div class="botones">
+        <div class="col-md-2" style="float: left;">
+            <input type="number" name="codigo" id="codigo" class="form-control" #codigo placeholder="Codigo"
+                (keyup.enter)="buscarC(codigo.value)">
+        </div>
+
+        <button style="margin-right:20px;" id="buscar" type="button" class="btn btn-info" data-toggle="modal"
+            data-target="#modalProd"><span class="bi bi-search"></span></button>
+
+        <button id="productos" type="button" class="btn btn-dark" (click)="getProductos()" data-toggle="modal"
+            data-target="#modalAddP">Productos
+            <span class="bi bi-justify"></span></button>
+    </div>
+
+    <form class="form-group col-md-6" id="formVenta" #registerVentaForm="ngForm"
+        (ngSubmit)="onSubmit(registerVentaForm)">
+        <div id="listaP">
+            <div class="modal fade" id="modalProd" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content" id="cont-2">
+                        <div class="modal-header">
+                            <h5> Buscar producto
+                            </h5>
+                            <button type="button" class="close" style="color:black" data-dismiss="modal"
+                                aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-boddy" id="body-2">
+                            <label for="nombre" class="col-form-label"> Nombre: </label>
+                            <input #nombre type="text" class="form-control" id="nombre">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal"
+                                (click)="reiniciar()">Cancelar</button>
+                            <button type="button" class="btn btn-success" (click)="buscarN(nombre.value)"
+                                data-dismiss="modal" data-toggle="modal" data-target="#modalAddP">Buscar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modalAddP" role="dialog">
+                <div class="modal-dialog modal-fullscreen ">
+                    <div class="modal-content" id="cont-1">
+                        <div class="modal-header">
+                            <h4> Lista de Productos
+                            </h4>
+                            <button type="button" class="close" style="color:black" data-dismiss="modal"
+                                aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-boddy">
+                            <div class="table-responsive">
+                                <table class="table  table-striped" id="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Codigo</th>
+                                            <th scope="col">Nombre</th>
+                                            <th scope="col">Tipo</th>
+                                            <th scope="col">Precio</th>
+                                            <th scope="col">Cantidad Inventario</th>
+                                            <th scope="col">Añadir</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- | slice:desde:hasta let i=index-->
+                                        <tr *ngFor="let producto of productos">
+                                            <td>{{producto.codigo}}</td>
+                                            <td>{{producto.nombre}}</td>
+                                            <td>{{producto.tipo}}</td>
+                                            <td>{{producto.precio}}</td>
+                                            <td>{{producto.cantidad_inve}}</td>
+                                            <td>
+                                                <button type="button" class="btn btn-success"
+                                                    (click)="loadTabla(producto)" data-dismiss="modal"><span
+                                                        class="bi bi-plus"></span>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <!--
+                                <mat-paginator [length]="productos.length" [pageSize]="4" aria-label="Select page"
+                                    (page)="cambiarpagina($event)" *ngIf="productos.length>4">
+                                </mat-paginator>
+                            -->
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: 20px; width: 120%;">
+            <div class="table-responsive">
+                <table class="table  table-striped" id="tableV">
+                    <thead>
+                        <tr>
+                            <th scope="col">Cantidad</th>
+                            <th scope="col">Codigo</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Tipo</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Inventario</th>
+                            <th scope="col">Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let prod of productitos">
+                            <td>
+                                <button type="button" class="btn btn-info"><span class="bi bi-dash"
+                                        (click)="menos(prod.id)"></span>
+                                </button>
+                                {{prod.cantidad}}
+                                <button type="button" class="btn btn-info"><span class="bi bi-plus"
+                                        (click)="mas(prod.id)"></span>
+                                </button>
+                            </td>
+                            <td>{{prod.codigo}}</td>
+                            <td>{{prod.nombre}}</td>
+                            <td>{{prod.tipo}}</td>
+                            <td>{{prod.precio}}</td>
+                            <td>{{prod.cantidad_inve}}</td>
+                            <td>
+                                <button type="button" class="btn btn-danger"><span class="bi bi-trash-fill"
+                                        (click)="delete(prod.id)"></span>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <h5>Total: ₡{{venta.total}}</h5>
+        <div id="info">
+            <input id="boton" type="submit" value="Agregar" class="btn btn-success"
+                [disabled]="registerVentaForm.invalid">
+        </div>
+    </form>
+    <button id="limpiar" class="btn btn-danger" (click)="limpiar()">
+        Limpiar
+    </button>
+</body>

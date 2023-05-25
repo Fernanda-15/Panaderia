@@ -1,0 +1,52 @@
+<div class="container">
+
+
+    <h3>Lista de Ventas</h3>
+
+    <div class="table-responsive">
+
+    <table  class="table  table-striped" id="table" >
+        <thead>
+            <tr>
+                
+                <th scope="col">Fecha</th>
+                <th scope="col">ID</th>
+                <th scope="col">Total</th>
+                <th scope="col">Eliminar</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let venta of ventas">
+                <tr *ngIf="venta.user_id == user.id && venta.fecha == hoyEs || user.rol=='admin' && venta.fecha == hoyEs">
+
+                    <td>{{venta.fecha}}</td>
+                    <td>{{venta.id}}</td>
+                    <td>{{venta.total}}</td>
+                    
+  
+                    <td>
+                    <button *ngIf="user.rol=='admin'" id="btnDelete" class="btn btn-danger btn-xs" (click)="delete(venta.id)">
+                        <span class="bi bi-trash-fill"></span>
+                    </button>
+                                   
+                    </td>
+  
+                </tr>
+            </ng-container>
+            
+
+      </tbody>
+
+
+    </table>
+    
+
+  </div>
+
+ 
+
+</div>
+
+
+  

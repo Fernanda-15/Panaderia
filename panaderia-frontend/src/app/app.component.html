@@ -1,0 +1,67 @@
+<nav class="navbar navbar-expand-lg bg-dark" id="menu">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/login" *ngIf="!(identity)">
+      <img src="assets/images/logo.png" width="50" height="50" routerLink="/"> Panaderia Los Angeles
+    </a>
+    <a class="navbar-brand" href="/" *ngIf="(identity)">
+      <img src="assets/images/logo.png" width="50" height="50" routerLink="/"> Panaderia Los Angeles
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item dropdown" id="opc">
+          <a class="nav-link dropdown-toggle" *ngIf="(identity) && (identity.rol=='admin')" role="btn-group"
+            data-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-people-fill"></i> Usuarios
+          </a>
+          <ul class="dropdown-menu" id="submenu">
+            <li><a class="dropdown-item" href="/user-create"><i class="bi bi-plus-lg"></i> Agregar</a></li>
+            <li><a class="dropdown-item" href="/user-list"><i class="bi bi-list"></i> Listar</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown" id="opc">
+          <a class="nav-link dropdown-toggle" *ngIf="(identity) && (identity.rol=='admin')" role="btn-group"
+            data-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-basket2"></i> Productos
+          </a>
+          <ul class="dropdown-menu" id="submenu">
+            <li><a class="dropdown-item" href="/producto-create"><i class="bi bi-plus-lg"></i> Agregar</a></li>
+            <li><a class="dropdown-item" href="/producto-list"><i class="bi bi-list"></i> Listar</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown" id="opc">
+          <a class="nav-link dropdown-toggle" *ngIf="(identity)" role="btn-group" data-toggle="dropdown"
+            aria-expanded="false">
+            <i class="bi bi-shop-window"></i> Ventas
+          </a>
+          <ul class="dropdown-menu" id="submenu">
+            <li><a class="dropdown-item" href="/venta-create"><i class="bi bi-plus-lg"></i> Agregar</a></li>
+            <li><a class="dropdown-item" href="/venta-list"><i class="bi bi-list"></i> Listar</a></li>
+            <li><a class="dropdown-item" href="/reporte-list"><i class="bi bi-file-text"></i> Reportes</a></li>
+          </ul>
+        </li>
+        <li class="nav-item" id="opc">
+          <a class="nav-link" *ngIf="(identity)" (click)="cerrar()">Cerrar Sesión <i
+              class="bi bi-box-arrow-in-right"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<body>
+  <div >
+    <router-outlet></router-outlet>
+  </div>
+</body>
+
+
+<footer>
+  <p>
+    <a target="_blank">&copy; 2022 Created by Fernanda Quesada. Todos los derechos reservados</a>
+  </p>
+</footer>

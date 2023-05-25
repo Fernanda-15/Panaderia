@@ -1,0 +1,24 @@
+form{
+    
+    margin-top: 30px;
+    background: #ece8e8;
+    padding: 20px;
+    border-radius: 20px;
+    width: 45%;
+    margin-left: 300px;
+    margin-bottom: 100px;
+    
+    border: solid 4px #F8C1C1;
+}
+
+
+
+.row{
+    margin-left: 90px;
+}
+
+h4{
+    text-align: center;
+    margin-bottom: 25px;
+
+}

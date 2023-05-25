@@ -1,0 +1,58 @@
+<body>
+    <div class="container" id="container">
+    
+        <h3>Lista de Productos</h3>
+  
+        <div class="table-responsive">
+    
+            <table class="table  table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Codigo</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Cantidad Inventario</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Eliminar</th>
+    
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let producto of productos ">
+    
+                        <td>{{producto.codigo}}</td>
+                        <td>{{producto.nombre}}</td>
+                        <td>{{producto.tipo}}</td>
+                        <td>{{producto.precio}}</td>
+                        <td>{{producto.cantidad_inve}}</td>
+    
+    
+                        <td>
+                            <a [routerLink]="['/producto-update',producto.id]" class="btn btn-warning btn-xs" u>
+    
+                                <span class="bi bi-pencil-fill"></span>
+                            </a>
+                        </td>
+                        <td>
+                            <button id="btnDelete" class="btn btn-danger btn-xs" (click)="delete(producto.id)">
+                                <span class="bi bi-trash-fill"></span>
+                            </button>
+    
+    
+                        </td>
+                    </tr>
+    
+                </tbody>
+    
+    
+            </table>
+    
+    
+        </div>
+    
+    
+    
+    </div>
+
+</body>

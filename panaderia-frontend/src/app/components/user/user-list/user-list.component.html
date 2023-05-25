@@ -1,0 +1,54 @@
+<body>
+  
+    <div class="container">
+
+    
+        <h3>Lista de Usuarios</h3>
+    
+        <div class="table-responsive">
+    
+        <table  class="table  table-striped" id="table" >
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Rol</th>
+                    <th scope="col">Editar</th>
+                    <th scope="col">Eliminar</th>
+    
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users">
+    
+                      <td>{{user.nombre}}</td>
+                      <td *ngIf="user.rol == 'admin'">Administrador</td>
+                      <td *ngIf="user.rol == 'vend'">Vendedor</td>
+    
+                      <td >
+                        <a [routerLink]="['/user-update',user.id]" class="btn btn-warning btn-xs"  u>
+    
+                            <span  class="bi bi-pencil-fill"></span>
+                        </a>
+                      </td>
+                      <td>
+                      <button id="btnDelete" class="btn btn-danger btn-xs" (click)="delete(user.id)">
+                          <span class="bi bi-trash-fill"></span>
+                      </button>
+                    
+                        
+                      </td>
+              </tr>
+    
+          </tbody>
+    
+    
+        </table>
+        
+    
+      </div>
+    
+    </div>
+    
+    
+      
+</body>
